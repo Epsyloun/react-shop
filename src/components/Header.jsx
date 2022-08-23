@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import '@styles/Header.scss';
 import Menu from '@components/Menu';
 import menu from '@icons/icon_menu.svg';
@@ -15,6 +15,20 @@ const Header = () => {
 	const handleToggle = () => {
 		setToggle(!toggle);
 	}
+
+	useEffect(()=>{
+		if(toggle === true){
+			setToggleOrders(false);
+			setToggle(true)
+		}
+	},[toggle])
+
+	useEffect(()=>{
+		if(toggleOrders === true){
+			setToggle(false);
+			setToggleOrders(true)
+		}
+	},[toggleOrders])
 
 	return (
 		<nav>
@@ -53,8 +67,8 @@ const Header = () => {
 					</li>
 				</ul>
 			</div>
-			{toggle && <Menu />}
-			{toggleOrders && <MyOrder/>}
+			{<Menu animation={toggle ? 'in-menu' : 'out-menu'}/>}
+			{<MyOrder animation={toggleOrders ? 'in' : 'out'} toggleOrders={toggleOrders} setToggleOrders={setToggleOrders}/>}
 		</nav>
 	);
 }

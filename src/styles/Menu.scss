@@ -9,6 +9,30 @@
 	position: absolute;
 	top: 60px;
 	right: 50px;
+	background-color: white;
+	visibility: hidden;
+	transform-origin: top;
+}
+.in-menu{
+	visibility: visible;
+	animation: down-slide-in ease 0.2s;
+}
+.out-menu{
+	animation: down-slide-out ease 0.2s;
+}
+@keyframes down-slide-in {
+	0% {transform: scaleY(0%);}
+	
+	100% {transform: scaleY(100%);}
+}
+@keyframes down-slide-out {
+	0% {
+		visibility: visible;
+		transform: scaleY(100%);}
+	
+	100% {
+		transform: scaleY(1%);
+	}
 }
 .Menu ul {
 	list-style: none;

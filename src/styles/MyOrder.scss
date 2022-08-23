@@ -1,6 +1,7 @@
 @import 'vars';
 
 .MyOrder {
+	height: 100vh;
 	width: 360px;
 	padding: 24px;
 	box-sizing: border-box;
@@ -11,7 +12,33 @@
 	bottom: 0;
 	border-radius: 6px;
 	border: 1px solid var(--very-light-pink);
+	position: fixed;
+	visibility: hidden;
 }
+
+.in{
+	visibility: visible;
+	animation: left-slide-in ease 0.2s;
+}
+.out{	
+	animation: left-slide-out ease 0.2s;
+}
+
+@keyframes left-slide-in {
+	0% {transform: translateX(360px);}
+	
+	100% {transform: translateX(-0px);}
+}
+@keyframes left-slide-out {
+	0% {
+		visibility: visible;
+		transform: translateX(0px);}
+	
+	100% {
+		transform: translateX(360px);
+	}
+}
+
 .title-container {
 	display: flex;
 }
@@ -57,6 +84,30 @@
 	font-weight: bold;
 	height: 50px;
 }
+.my-order-content{
+	overflow-y: auto;
+	max-height: 400px;
+	scroll-behavior: smooth;
+}
+/* width */
+.my-order-content::-webkit-scrollbar {
+	width: 5px;
+	}
+	
+	/* Track */
+	.my-order-content::-webkit-scrollbar-track {
+	background: #f1f1f1;
+	}
+	
+	/* Handle */
+	.my-order-content::-webkit-scrollbar-thumb {
+	background: var(--hospital-green);
+	}
+	
+	/* Handle on hover */
+	.my-order-content::-webkit-scrollbar-thumb:hover {
+	background: var(--hospital-green-hover);
+	}
 @media (max-width: 640px) {
 	.MyOrder {
 		width: 100%;

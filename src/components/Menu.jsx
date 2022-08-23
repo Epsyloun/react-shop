@@ -1,9 +1,9 @@
 import React from 'react';
 import '@styles/Menu.scss';
 
-const Menu = () => {
+const Menu = ({animation}) => {
 	return (
-		<div className="Menu">
+		<div className={`Menu ${animation}`}>
 			<ul>
 				<li>
 					<a href="/" className="title">My orders</a>

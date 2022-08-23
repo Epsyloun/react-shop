@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React, { useState,useContext } from "react";
 import OrderItem from "@components/OrderItem";
 import "@styles/MyOrder.scss";
 import arrow from "@icons/flechita.svg";
 import AppContext from "../context/AppContext";
 
-const MyOrder = () => {
+const MyOrder = ({animation, toggleOrders, setToggleOrders}) => {
+
   const { state } = useContext(AppContext);
 
   const sumTotal = () => {
@@ -15,23 +16,23 @@ const MyOrder = () => {
   };
 
   return (
-    <aside className="MyOrder">
+    <aside className={`MyOrder ${animation}`}>
       <div className="title-container">
-        <img src={arrow} alt="arrow" />
+        <img onClick={()=>setToggleOrders(!toggleOrders)} src={arrow} alt="arrow" />
         <p className="title">My order</p>
       </div>
       <div className="my-order-content">
-        {state.cart.map((product, index) => (
-          <OrderItem indexValue={index} product={product} key={index} />
-        ))}
-        <div className="order">
-          <p>
-            <span>Total</span>
-          </p>
-          <p>{sumTotal()}</p>
-        </div>
-        <button className="primary-button">Checkout</button>
+      {state.cart.map(product => (
+					<OrderItem product={product} key={`orderItem-${product.id}`} />
+				))}
       </div>
+      <div className="order">
+        <p>
+          <span>Total</span>
+        </p>
+        <p>{sumTotal()}</p>
+      </div>
+      <button className="primary-button">Checkout</button>
     </aside>
   );
 };
