@@ -1,5 +1,35 @@
 .mobile-menu {
+    height: 100vh;
+    margin-top: 61px;
     padding: 24px;
+    position: absolute;
+    background-color: white;
+    width: 100%;
+    visibility: hidden;
+  }
+  .in-mobile{
+    visibility: visible;
+    animation: in-left linear 0.2s;
+  }
+  .out-mobile{
+    animation: out-left linear 0.2s;
+  }
+  @keyframes in-left{
+    0%{
+      transform: translateX(-900px);
+    }
+    100%{
+      transform: translateX(-0px);
+    }
+  }
+  @keyframes out-left{
+    0%{
+      visibility: visible;
+      transform: translateX(0px);
+    }
+    100%{
+      transform: translateX(-900px);  
+    }
   }
   .mobile-menu a {
     text-decoration: none;

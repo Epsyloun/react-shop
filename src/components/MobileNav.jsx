@@ -1,9 +1,9 @@
 import React from "react";
 import '../styles/MobileNav.scss'
 
-function MobileNav() {
+function MobileNav({animation}) {
   return (
-    <div className="mobile-menu">
+    <div className={`mobile-menu ${animation}`}>
       <ul>
         <li>
           <a href="/">CATEGORIES</a>
