@@ -7,10 +7,13 @@ import shoppingCart from '@icons/icon_shopping_cart.svg';
 import AppContext from '../context/AppContext';
 import MyOrder from '../containers/MyOrder'
 import { MobileNav } from '@components/MobileNav'
+import { ViewMore } from './ViewMore';
 
 const Header = () => {
-	
-	const {state:{cart}, 
+
+	const {state:{cart},
+		id,
+		viewMore,
 		init,
 		toggle,
 		toggleOrders,
@@ -20,11 +23,24 @@ const Header = () => {
 		setToggleOrders,
 		setToggleMenu,
 		setViewMore,
+		setCategory,
 	} = useContext(AppContext)
 
 	const handleToggle = () => {
 		setToggle(!toggle);
 	}
+
+	//Funcion para manejar el aside de ver mas
+	//Primero cerramos los demas asides
+	useEffect(()=>{
+		if(viewMore === true){
+			setInit(true)
+			setToggle(false);
+			setToggleMenu(false);
+			setToggleOrders(false)
+			setViewMore(true);
+		}
+	},[viewMore])
 
 	useEffect(()=>{
 		if(toggleMenu === true){
@@ -57,28 +73,28 @@ const Header = () => {
 	},[toggleOrders])
 
 	return (
-		<nav>
+		<nav style={{zIndex:2}}>
 			<img src={menu} alt="menu" className="menu" onClick={()=>setToggleMenu(!toggleMenu)} />
 			<div className="navbar-left">
 				<img src={logo} alt="logo" className="nav-logo" />
 				<ul>
 					<li>
-						<a href="/">All</a>
+						<a onClick={()=>{setCategory(null)}} href="#">All</a>
 					</li>
 					<li>
-						<a href="/">Clothes</a>
+						<a onClick={()=>{setCategory('Clothes')}} href="#">Clothes</a>
 					</li>
 					<li>
-						<a href="/">Electronics</a>
+						<a onClick={()=>{setCategory('Electronics')}} href="#">Electronics</a>
 					</li>
 					<li>
-						<a href="/">Furnitures</a>
+						<a onClick={()=>{setCategory('Furnitures')}} href="#">Furnitures</a>
 					</li>
 					<li>
-						<a href="/">Toys</a>
+						<a onClick={()=>{setCategory('Toys')}} href="#">Toys</a>
 					</li>
 					<li>
-						<a href="/">Others</a>
+						<a onClick={()=>{setCategory('Others')}} href="#">Others</a>
 					</li>
 				</ul>
 			</div>
@@ -95,12 +111,14 @@ const Header = () => {
 			</div>
 			{init ?
 			<>
+				<ViewMore  id={id} animation={viewMore ? 'in' : 'out'}/>
 				<MobileNav animation={toggleMenu ? 'in-mobile' : 'out-mobile'}/>
 				<Menu animation={toggle ? 'in-menu' : 'out-menu'}/>
 				<MyOrder animation={toggleOrders ? 'in' : 'out'} toggleOrders={toggleOrders} setToggleOrders={setToggleOrders}/>
 			</>
 			:
 			<>
+				<ViewMore  id={id} animation=''/>
 				<MobileNav animation=''/>
 				<Menu animation=''/>
 				<MyOrder animation='' toggleOrders={toggleOrders} setToggleOrders={setToggleOrders}/>

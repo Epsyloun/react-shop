@@ -10,6 +10,8 @@ const OrderItem = ({ product }) => {
     removeFromCart(index);
   }
 
+
+
   return (
     <div className="OrderItem">
       <figure>

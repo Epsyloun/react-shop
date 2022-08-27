@@ -1,7 +1,6 @@
 .mobile-menu {
     height: 100vh;
     margin-top: 61px;
-    padding: 24px;
     position: absolute;
     background-color: white;
     width: 100%;
@@ -28,7 +27,7 @@
       transform: translateX(0px);
     }
     100%{
-      transform: translateX(-900px);  
+      transform: translateX(-900px);
     }
   }
   .mobile-menu a {
@@ -46,7 +45,12 @@
     border-bottom: 1px solid var(--very-light-pink);
   }
   .mobile-menu ul li {
-    margin-bottom: 24px;
+    margin-bottom: 16px;
+    padding: 10px;
+    cursor: pointer;
+  }
+  .mobile-menu ul li:active{
+    background-color: #f4f4f4;
   }
   .email {
     font-size: var(--sm);

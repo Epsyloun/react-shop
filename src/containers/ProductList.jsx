@@ -1,25 +1,27 @@
-import React from 'react';
+import React, { useState,useEffect } from 'react';
 import ProductItem from '@components/ProductItem';
 import '@styles/ProductList.scss';
-import  useGetProducts from '../hooks/useGetProducts';
+
 
 const API = 'https://api.escuelajs.co/api/v1/products'
 
-const ProductList = () => {
+const ProductList = ({products}) => {
 	//const products = useGetProducts(API)
-	const products = [{
-		images: ['https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'],
-		title:'Nombre del articulo',
-		price:'50.00',
-		detail:'una pequeña descripccion del producto'
-	}
-	]
-	
+
+	const [listProducts, setListProducts] = useState(products);
+
+	useEffect(()=>{
+		setListProducts([])
+		setTimeout(()=>{
+			setListProducts(products)
+		},100)
+	},[products])
+
 	return (
 		<section className="main-container">
 			<div className="ProductList">
-				{products.map(product=>(
-					<ProductItem product={product}/>
+				{listProducts.map((product, index)=>(
+					<ProductItem index={index} product={product} key={product.id}/>
 				))}
 			</div>
 		</section>

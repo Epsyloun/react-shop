@@ -5,7 +5,6 @@
 	width: 360px;
 	padding: 24px;
 	box-sizing: border-box;
-	position: absolute;
 	right: 0;
 	background-color: white;
 	top: 60px;
@@ -20,21 +19,21 @@
 	visibility: visible;
 	animation: left-slide-in ease 0.2s;
 }
-.out{	
+.out{
 	animation: left-slide-out ease 0.2s;
 }
 
 @keyframes left-slide-in {
-	0% {transform: translateX(360px);}
-	
-	100% {transform: translateX(-0px);}
+	from {transform: translateX(360px);}
+
+	to {transform: translateX(0px);}
 }
 @keyframes left-slide-out {
-	0% {
+	from {
 		visibility: visible;
 		transform: translateX(0px);}
-	
-	100% {
+
+	to {
 		transform: translateX(360px);
 	}
 }
@@ -93,17 +92,17 @@
 .my-order-content::-webkit-scrollbar {
 	width: 5px;
 	}
-	
+
 	/* Track */
 	.my-order-content::-webkit-scrollbar-track {
 	background: #f1f1f1;
 	}
-	
+
 	/* Handle */
 	.my-order-content::-webkit-scrollbar-thumb {
 	background: var(--hospital-green);
 	}
-	
+
 	/* Handle on hover */
 	.my-order-content::-webkit-scrollbar-thumb:hover {
 	background: var(--hospital-green-hover);

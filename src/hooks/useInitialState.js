@@ -17,6 +17,9 @@ const useInitialState = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [viewMore, setViewMore] = useState(false)
 
+  //Variable para categorias
+  const [category, setCategory] = useState(null);
+
   const AddToCart = (payload) => {
     setState({
       ...state,
@@ -30,7 +33,8 @@ const useInitialState = () => {
 		});
 	}
 
-  return { 
+  return {
+    category,
     id,
     viewMore,
     state,
@@ -38,6 +42,7 @@ const useInitialState = () => {
     toggle,
     toggleOrders,
     toggleMenu,
+    setCategory,
     AddToCart,
     removeFromCart,
     setId,
