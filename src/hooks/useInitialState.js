@@ -6,17 +6,24 @@ const initialState = {
 
 
 const useInitialState = () => {
-  const [state, setState] = useState(initialState);
 
-  //Creamos una funcion para guardar el id en el view more
-	const [id, setId] = useState(0)
+  //VARIABLES DE USUARIO
+  const [email, setEmail] = useState(null);//email
+  const [pass, setPass] = useState(null);//pass
+	const [userFlag, setUserFlag] = useState(false);//Flag de user
 
-  //Hook para view more
+
+  //VARIABLES PARA DISEÑO
+  //Variable para ventana de view more
   const [viewMore, setViewMore] = useState(false)
-
-  //Variable para categorias
+  //variable para mostrar productos
+	const [id, setId] = useState(0)
+  //variable para mostrar categorias
   const [category, setCategory] = useState(null);
 
+  //VARIABLES DE CARRITO
+  //Estado que contiene los mantenimientos del carrito
+  const [state, setState] = useState(initialState);
   const AddToCart = (payload) => {
     setState({
       ...state,
@@ -35,11 +42,17 @@ const useInitialState = () => {
     id,
     viewMore,
     state,
+    email,
+    pass,
+    userFlag,
     setCategory,
     AddToCart,
     removeFromCart,
     setId,
     setViewMore,
+    setEmail,
+    setPass,
+    setUserFlag,
   };
 };
 

@@ -204,12 +204,13 @@ function ProductArray() {
 
     return ( products );
 }
-
+//Funcion para obtener 1 producto
 function searchProduct(id){
     const products = ProductArray()
     const newProduct = products.find( producto => producto.id === id)
     return(newProduct)
 }
+//Funcion para obtener todos los productos por categoria
 function searchByCategory(category){
 
 	const products = ProductArray()

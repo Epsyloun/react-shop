@@ -11,28 +11,31 @@ import { ViewMore } from './ViewMore';
 
 const Header = () => {
 
+	//Variables del context
 	const {state:{cart},
 		id,
 		viewMore,
+		email,
+		userFlag,
 		setViewMore,
 		setCategory,
-	} = useContext(AppContext)
+	} = useContext(AppContext);
 
-	const handleToggle = () => {
-		setToggleMyAccount(!toggleMyAccount);
-	}
-
-	//estados para los slider
+	//estados para los slider laterales
+	//Dropdown My account
 	const [initToggleMyAccount, setInitToggleMyAccount] = useState(false);
 	const [initToggleOrders, setInitToggleOrders] = useState(false);
+	//Menu en mobile
 	const [initToggleMenuMobile, setInitToggleMenuMobile] = useState(false);
-	const [initViewMore, setInitViewMore] = useState(false);
+	const [toggleMenuMobile, setToggleMenuMobile] = useState(false);
+	//Menu del carrito
 	const [toggleMyAccount, setToggleMyAccount] = useState(false);
 	const [toggleOrders, setToggleOrders] = useState(false);
-	const [toggleMenuMobile, setToggleMenuMobile] = useState(false);
+	//inicializacion de efecto view more ya que la otra parte esta en el context
+	const [initViewMore, setInitViewMore] = useState(false);
 
 	//Funcion para manejar los aside que se esconden
-	//Primero cerramos los demas asides
+	//effect de view more
 	useEffect(()=>{
 		if(viewMore === true){
 			setInitViewMore(true)
@@ -42,7 +45,7 @@ const Header = () => {
 			setViewMore(true);
 		}
 	},[viewMore])
-
+	//effect de menu mobile
 	useEffect(()=>{
 		if(toggleMenuMobile === true){
 			setInitToggleMenuMobile(true)
@@ -52,7 +55,7 @@ const Header = () => {
 			setToggleMenuMobile(true)
 		}
 	},[toggleMenuMobile])
-
+	//effect dropdown my account
 	useEffect(()=>{
 		if(toggleMyAccount === true){
 			setInitToggleMyAccount(true)
@@ -62,7 +65,7 @@ const Header = () => {
 			setToggleMyAccount(true);
 		}
 	},[toggleMyAccount])
-
+	//effect del carrito
 	useEffect(()=>{
 		if(toggleOrders === true){
 			setInitToggleOrders(true)
@@ -101,9 +104,16 @@ const Header = () => {
 			</div>
 			<div className="navbar-right">
 				<ul>
-					<li className="navbar-email" onClick={handleToggle}>
-						<a href='#'>platzi@example.com</a>
+					{userFlag?
+					<li className="navbar-email" onClick={()=>setToggleMyAccount(!toggleMyAccount)}>
+						<a href='#'>{email}</a>
 					</li>
+					:
+					<li className="navbar-email" onClick={()=>setToggleMyAccount(!toggleMyAccount)}>
+						<a href='/login'>Iniciar sesión</a>
+					</li>
+					}
+
 					<li className="navbar-shopping-cart" onClick={()=>setToggleOrders(!toggleOrders)}>
 						<img src={shoppingCart} alt="shopping cart" />
 						{cart.length >0 ? <div>{cart.length} </div>: null}
@@ -116,9 +126,9 @@ const Header = () => {
 				<ViewMore  id={id} animation=''/>
 			}
 			{initToggleMenuMobile?
-				<MobileNav animation={toggleMenuMobile ? 'in-mobile' : 'out-mobile'}/>
+				<MobileNav toggleMenuMobile={toggleMenuMobile} setToggleMenuMobile={setToggleMenuMobile} animation={toggleMenuMobile ? 'in-mobile' : 'out-mobile'}/>
 			:
-				<MobileNav animation=''/>
+				<MobileNav toggleMenuMobile={toggleMenuMobile} setToggleMenuMobile={setToggleMenuMobile} animation=''/>
 			}
 			{initToggleMyAccount?
 				<Menu animation={toggleMyAccount ? 'in-menu' : 'out-menu'}/>

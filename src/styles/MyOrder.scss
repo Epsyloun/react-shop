@@ -42,8 +42,13 @@
 	display: flex;
 }
 .title-container img {
+	padding-left: 12px;
+	padding-right: 12px;
 	cursor: pointer;
 	margin-right: 14px;
+}
+.title-container img:hover {
+	background-color: #f4f4f4;
 }
 .title {
 	font-size: var(--lg);
