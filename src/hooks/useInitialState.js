@@ -11,10 +11,7 @@ const useInitialState = () => {
   //Creamos una funcion para guardar el id en el view more
 	const [id, setId] = useState(0)
 
-  const [init, setInit] = useState(false)
-  const [toggle, setToggle] = useState(false);
-  const [toggleOrders, setToggleOrders] = useState(false);
-  const [toggleMenu, setToggleMenu] = useState(false);
+  //Hook para view more
   const [viewMore, setViewMore] = useState(false)
 
   //Variable para categorias
@@ -38,19 +35,11 @@ const useInitialState = () => {
     id,
     viewMore,
     state,
-    init,
-    toggle,
-    toggleOrders,
-    toggleMenu,
     setCategory,
     AddToCart,
     removeFromCart,
     setId,
     setViewMore,
-    setInit,
-    setToggle,
-    setToggleOrders,
-    setToggleMenu,
   };
 };
 

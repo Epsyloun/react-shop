@@ -14,59 +14,60 @@ const Header = () => {
 	const {state:{cart},
 		id,
 		viewMore,
-		init,
-		toggle,
-		toggleOrders,
-		toggleMenu,
-		setInit,
-		setToggle,
-		setToggleOrders,
-		setToggleMenu,
 		setViewMore,
 		setCategory,
 	} = useContext(AppContext)
 
 	const handleToggle = () => {
-		setToggle(!toggle);
+		setToggleMyAccount(!toggleMyAccount);
 	}
 
-	//Funcion para manejar el aside de ver mas
+	//estados para los slider
+	const [initToggleMyAccount, setInitToggleMyAccount] = useState(false);
+	const [initToggleOrders, setInitToggleOrders] = useState(false);
+	const [initToggleMenuMobile, setInitToggleMenuMobile] = useState(false);
+	const [initViewMore, setInitViewMore] = useState(false);
+	const [toggleMyAccount, setToggleMyAccount] = useState(false);
+	const [toggleOrders, setToggleOrders] = useState(false);
+	const [toggleMenuMobile, setToggleMenuMobile] = useState(false);
+
+	//Funcion para manejar los aside que se esconden
 	//Primero cerramos los demas asides
 	useEffect(()=>{
 		if(viewMore === true){
-			setInit(true)
-			setToggle(false);
-			setToggleMenu(false);
+			setInitViewMore(true)
+			setToggleMyAccount(false);
+			setToggleMenuMobile(false);
 			setToggleOrders(false)
 			setViewMore(true);
 		}
 	},[viewMore])
 
 	useEffect(()=>{
-		if(toggleMenu === true){
-			setInit(true)
+		if(toggleMenuMobile === true){
+			setInitToggleMenuMobile(true)
 			setToggleOrders(false);
-			setToggle(false);
+			setToggleMyAccount(false);
 			setViewMore(false);
-			setToggleMenu(true)
+			setToggleMenuMobile(true)
 		}
-	},[toggleMenu])
+	},[toggleMenuMobile])
 
 	useEffect(()=>{
-		if(toggle === true){
-			setInit(true)
+		if(toggleMyAccount === true){
+			setInitToggleMyAccount(true)
 			setToggleOrders(false);
-			setToggleMenu(false);
+			setToggleMenuMobile(false);
 			setViewMore(false);
-			setToggle(true);
+			setToggleMyAccount(true);
 		}
-	},[toggle])
+	},[toggleMyAccount])
 
 	useEffect(()=>{
 		if(toggleOrders === true){
-			setInit(true)
-			setToggle(false);
-			setToggleMenu(false);
+			setInitToggleOrders(true)
+			setToggleMyAccount(false);
+			setToggleMenuMobile(false);
 			setViewMore(false);
 			setToggleOrders(true)
 		}
@@ -74,7 +75,7 @@ const Header = () => {
 
 	return (
 		<nav style={{zIndex:2}}>
-			<img src={menu} alt="menu" className="menu" onClick={()=>setToggleMenu(!toggleMenu)} />
+			<img src={menu} alt="menu" className="menu" onClick={()=>setToggleMenuMobile(!toggleMenuMobile)} />
 			<div className="navbar-left">
 				<img src={logo} alt="logo" className="nav-logo" />
 				<ul>
@@ -109,20 +110,25 @@ const Header = () => {
 					</li>
 				</ul>
 			</div>
-			{init ?
-			<>
+			{initViewMore?
 				<ViewMore  id={id} animation={viewMore ? 'in' : 'out'}/>
-				<MobileNav animation={toggleMenu ? 'in-mobile' : 'out-mobile'}/>
-				<Menu animation={toggle ? 'in-menu' : 'out-menu'}/>
-				<MyOrder animation={toggleOrders ? 'in' : 'out'} toggleOrders={toggleOrders} setToggleOrders={setToggleOrders}/>
-			</>
 			:
-			<>
 				<ViewMore  id={id} animation=''/>
+			}
+			{initToggleMenuMobile?
+				<MobileNav animation={toggleMenuMobile ? 'in-mobile' : 'out-mobile'}/>
+			:
 				<MobileNav animation=''/>
+			}
+			{initToggleMyAccount?
+				<Menu animation={toggleMyAccount ? 'in-menu' : 'out-menu'}/>
+			:
 				<Menu animation=''/>
+			}
+			{initToggleOrders?
+				<MyOrder animation={toggleOrders ? 'in' : 'out'} toggleOrders={toggleOrders} setToggleOrders={setToggleOrders}/>
+			:
 				<MyOrder animation='' toggleOrders={toggleOrders} setToggleOrders={setToggleOrders}/>
-			</>
 			}
 		</nav>
 	);

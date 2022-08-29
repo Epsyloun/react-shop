@@ -6,7 +6,7 @@ import { ViewMore } from '../components/ViewMore';
 
 
 const Home = () => {
-	const {category, id} = useContext(AppContext)
+	const {category} = useContext(AppContext)
 
 	const [products, setProducts] = useState(ProductArray());
 

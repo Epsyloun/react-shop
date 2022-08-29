@@ -49,6 +49,14 @@ nav {
 	border: 1px solid var(--hospital-green);
 	color: var(--hospital-green);
 }
+.navbar-right ul li img {
+	transition: 0.2s;
+	padding: 8px;
+	cursor: pointer;
+}
+.navbar-right ul li img:hover {
+	background-color: #e0e0e0;
+}
 .navbar-email {
 	color: var(--very-light-pink);
 	font-size: var(--sm);

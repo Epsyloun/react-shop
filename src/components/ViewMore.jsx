@@ -7,8 +7,8 @@ import addedToCartImage from '@icons/bt_added_to_cart.svg';
 import {searchProduct} from "../utils/ProductsArray";
 
 function ViewMore({animation,id}) {
-  
-  const {AddToCart, removeFromCart, state, } = useContext(AppContext);
+
+  const {AddToCart, removeFromCart, state, setViewMore} = useContext(AppContext);
 
   const [recivedId, setRecivedId] = useState(1);
 
@@ -26,13 +26,13 @@ function ViewMore({animation,id}) {
   //Funcion para agregar/eliminar al carrito
   const handleClick = (item) => {
   itsProductAdded() ? removeFromCart(item) : AddToCart(item);
+  setTimeout(()=>{
+    setViewMore(false);
+  },100)
 };
 
 //Funcion para que busque en el contexto si existe el producto en el carrito
 const itsProductAdded = () => state.cart.some( (item) => item.id === searchProducts.id) ? true : false;
-
-
-  const {setViewMore} = useContext(AppContext)
 
   return (
     <aside className={`product-detail ${animation}`}>

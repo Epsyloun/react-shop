@@ -12,7 +12,7 @@ const MyOrder = ({animation, toggleOrders, setToggleOrders}) => {
     const reducer = (accumulator, currentValue) =>
       accumulator + currentValue.price;
     const sum = state.cart.reduce(reducer, 0);
-    return sum;
+    return Math.round((sum + Number.EPSILON) * 100) / 100;
   };
 
   return (

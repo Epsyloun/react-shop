@@ -22,6 +22,7 @@ const App = () => {
 			<BrowserRouter>
 				<Layout>
 					<Routes>
+						{/* agregar react-shop para produccion en el path */}
 						<Route exact path="/" element={<Home/>} />
 						<Route exact path="/login" element={<Login/>} />
 						<Route exact path="/password-recovery" element={<PasswordRecovery/>} />

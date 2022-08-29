@@ -17,7 +17,6 @@ const ProductItem = ({product, index}) => {
 	function handleView(idSend){
 		if(id === idSend)
 		{
-
 			setViewMore(!viewMore);
 		}else if(id !== idSend){
 			setViewMore(false)
@@ -38,26 +37,23 @@ const ProductItem = ({product, index}) => {
 	const itsProductAdded = () => state.cart.some( (item) => item.id === product.id) ? true : false;
 
 	return (
-		<div className='wrapper-ProductItem'>
-			<div
-			className="ProductItem"
-			style={{animationDelay:`${index*0.1}s`}}
-			>
-			<h1>{product.length}</h1>
-				<img onClick={()=>handleView(product.id)} src={product.images[0]} alt={product.title} />
-				<div className="product-info">
-					<div onClick={()=>handleView(product.id)}>
-						<p>${product.price}</p>
-						<p>{product.title}</p>
-					</div>
-					<figure onClick={()=>handleClick(product)} >
-					{ itsProductAdded() ? (
-						<img src={addedToCartImage} alt="" />
-					) : (
-						<img src={addToCartImage} alt="" />
-					)}
-					</figure>
+		<div
+		className="ProductItem"
+		style={{animationDelay:`${index*0.1}s`}}
+		>
+			<img onClick={()=>handleView(product.id)} src={product.images[0]} alt={product.title} />
+			<div className="product-info">
+				<div onClick={()=>handleView(product.id)}>
+					<p>${product.price}</p>
+					<p>{product.title}</p>
 				</div>
+				<figure onClick={()=>handleClick(product)} >
+				{ itsProductAdded() ? (
+					<img src={addedToCartImage} alt="" />
+				) : (
+					<img src={addToCartImage} alt="" />
+				)}
+				</figure>
 			</div>
 		</div>
 	);
