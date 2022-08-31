@@ -10,12 +10,7 @@
 	display: grid;
 	grid-template-rows: auto 1fr auto;
 	width: 300px;
-}
-.logo {
-	width: 150px;
-	margin-bottom: 48px;
-	justify-self: center;
-	display: none;
+	animation: fade-in-n-left 0.5s;
 }
 .form {
 	display: flex;
@@ -34,13 +29,16 @@
 	margin-bottom: 4px;
 }
 .input {
-	background-color: var(--text-input-field);
-	border: none;
+	background-color: white !important;
+	border: solid 1px var(--hospital-green) !important;
 	border-radius: 8px;
 	height: 30px;
 	font-size: var(--md);
 	padding: 6px;
 	margin-bottom: 12px;
+}
+.input::placeholder{
+	color: #d3d3d3;
 }
 .input-email {
 	margin-bottom: 22px;
@@ -70,9 +68,4 @@
 .login-button {
 	margin-top: 14px;
 	margin-bottom: 30px;
-}
-@media (max-width: 640px) {
-	.logo {
-		display: block;
-	}
 }

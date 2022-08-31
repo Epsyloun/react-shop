@@ -2,7 +2,7 @@ import React, { useState,useEffect, useContext } from 'react';
 import ProductList from '@containers/ProductList';
 import {ProductArray, searchByCategory} from '../utils/ProductsArray';
 import AppContext from '../context/AppContext';
-import { ViewMore } from '../components/ViewMore';
+import Header from '@components/Header';
 
 
 const Home = () => {
@@ -20,7 +20,7 @@ const Home = () => {
 
 	return (
 		<>
-
+			<Header/>
 			<ProductList products={products} />
 		</>
 	);

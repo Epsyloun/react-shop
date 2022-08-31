@@ -6,3 +6,9 @@ body {
 	margin: 0;
 	font-family: 'Quicksand', sans-serif;
 }
+.logo {
+    width: 150px;
+    margin-bottom: 48px;
+    justify-self: center;
+    display: block;
+}

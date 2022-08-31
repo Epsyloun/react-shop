@@ -5,7 +5,7 @@
 	width: 240px;
 	cursor: pointer;
 	visibility: hidden;
-	animation: fade-in-n-down ease 1s forwards;
+	animation: fade-in-n-left ease 1s forwards;
 	z-index: 0;
 }
 .ProductItem img {
@@ -40,7 +40,7 @@
 	color: var(--very-light-pink);
 }
 
-@keyframes fade-in-n-down {
+@keyframes fade-in-n-left {
 	from{
 		opacity: 0;
 		transform: translateX(80px);
