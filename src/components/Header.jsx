@@ -109,7 +109,7 @@ const Header = () => {
 						<a href='#'>{email}</a>
 					</li>
 					:
-					<li className="navbar-email" onClick={()=>setToggleMyAccount(!toggleMyAccount)}>
+					<li className="navbar-email">
 						<a href='/login'>Iniciar sesión</a>
 					</li>
 					}
