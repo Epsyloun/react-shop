@@ -124,6 +124,18 @@ h1, h4 {
 	border: 1px solid white;
 	border-radius: 1px;
 }
+.hr-login-olvide{
+	margin-bottom:30px;
+	width: 80%;
+	border: 1px solid var(--hospital-green);
+	border-radius: 1px;
+}
+.olvide{
+	cursor: pointer;
+	background-color: white;
+	color: var(--hospital-green);
+	font-size: var(--lg);
+}
 
 @keyframes new-account-green-init {
 	0%{

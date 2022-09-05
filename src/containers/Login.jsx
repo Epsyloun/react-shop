@@ -39,6 +39,9 @@ const LoginContainer = () => {
         setUserFlag(true);
         navigate('/')
     };
+    const handleSubmitNew = () => {
+        navigate('/NotFound')
+    };
 
 const LoginGreen =
         <div
@@ -169,6 +172,8 @@ const NewAccountWhite =
                 >
                 Ingresar
                 </button>
+                <hr className="hr-login-olvide"/>
+                <a onClick={handleSubmitNew} className="olvide">Olvide mi contraseña</a>
         </form>
         </div>
 
